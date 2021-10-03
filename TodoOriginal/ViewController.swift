@@ -23,6 +23,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alertController.addTextField(configurationHandler: nil)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             (acrion: UIAlertAction) in
+            if let textField = alertController.textFields?.first {
+                self.todoList.insert(textField.text!, at: 0)
+                self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)] , with: UITableView.RowAnimation.right)
+            }
         }
         alertController.addAction(okAction)
         let cancelButton = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
